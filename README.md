@@ -4,11 +4,11 @@
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3572A5)
 [![MIT License](https://img.shields.io/badge/license-MIT-17636b)](LICENSE)
 
-**A small, inspectable toolkit for checking Python repositories and evaluating structured AI code reviews.**
+**Check Python repositories and score structured code reviews with reproducible, evidence-level results.**
 
-Code-review evaluation needs more than a list of issues a model happened to find. It needs a defined target, a penalty for invented findings, and enough evidence to explain the score. This project makes those pieces explicit.
+Repo Eval Workbench checks Python source without running it, then measures how well a submitted code review identifies a defined set of issues. Reports show what the review got right, what it missed, and which findings were false positives.
 
-It has two independent workflows:
+There are two workflows:
 
 - **Audit a repository:** inspect Python syntax trees for four narrowly defined risk patterns, with file/line evidence and repository metadata checks. Target code is never imported or executed.
 - **Evaluate a review:** compare JSONL predictions with an original synthetic dataset, measure false positives and missed findings, and export a deterministic JSON, Markdown, or standalone HTML report.
@@ -94,8 +94,8 @@ The baseline is the deterministic AST scanner, **not an LLM**. It is aligned wit
 
 [Architecture](docs/architecture.md) · [Dataset card](docs/dataset-card.md) · [Contributing](CONTRIBUTING.md)
 
-## Authorship and provenance
+## Project notes
 
-Created by Michael Starpoli as a new public portfolio project, with AI assistance for implementation, tests, and documentation. All benchmark samples were newly authored for this project. No employer/client code, private project data, or professional evaluation datasets are included. This is not a claim of prior production deployment or unaided authorship.
+Personal project by Michael Starpoli. The benchmark examples were created specifically for this repository and contain no employer or client material. See the [development note](docs/development.md) for tooling and attribution.
 
 Licensed under [MIT](LICENSE).

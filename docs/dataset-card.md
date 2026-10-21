@@ -6,7 +6,7 @@ Exercise the input contract and scoring behavior of a small, offline code-review
 
 ## Origin and permissions
 
-All samples are new synthetic Python snippets authored for this repository with AI assistance. None were copied from an employer, client, private repository, paid annotation project, or external benchmark. The dataset is included under the repository's MIT license.
+All samples are original synthetic Python snippets created for this repository. None were copied from an employer, client, private repository, paid annotation project, or external benchmark. The dataset is included under the repository's MIT license. Tooling and attribution are recorded in the [development note](development.md).
 
 ## Labeling approach
 

@@ -8,6 +8,6 @@ must be newly authored and synthetic.
 - Use apply_patch for edits. Keep tests deterministic and offline.
 - Do not execute scanned source code or model outputs.
 - Describe static checks as limited heuristics, not a security certification.
-- Disclose AI assistance and do not imply historical professional deployment.
+- Keep tooling attribution in docs/development.md accurate; do not imply historical professional deployment.
 - Before publication, run all tests and CLI examples, check generated reports,
   and inspect exactly what Git will publish.
