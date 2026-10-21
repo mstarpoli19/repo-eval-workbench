@@ -1,0 +1,362 @@
+{
+  "dataset_count": 24,
+  "metrics": {
+    "micro_f1": 0.6666666666666666,
+    "micro_precision": 0.7333333333333333,
+    "micro_recall": 0.6111111111111112,
+    "task_coverage": 0.9583333333333334
+  },
+  "prediction_count": 23,
+  "schema_version": "1.0",
+  "score": 0.638888888888889,
+  "tasks": [
+    {
+      "explanation": "The list default persists across calls, leaking messages between independent buffers.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "mutable-list-buffer",
+      "path": "synthetic/messages.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": [
+        {
+          "line": 1,
+          "rule_id": "mutable-default"
+        }
+      ]
+    },
+    {
+      "explanation": "The dict constructor runs once when the function is defined, sharing labels across calls.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "mutable-dict-constructor",
+      "path": "synthetic/labels.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": [
+        {
+          "line": 1,
+          "rule_id": "mutable-default"
+        }
+      ]
+    },
+    {
+      "explanation": "A mutable set default shares remembered keys between otherwise independent calls.",
+      "false_negatives": [
+        {
+          "line": 1,
+          "rule_id": "mutable-default"
+        }
+      ],
+      "false_positives": [],
+      "id": "mutable-set-default",
+      "path": "synthetic/keys.py",
+      "score": 0.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "The bare except also swallows process-control exceptions; the expected parse error should be named.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "bare-except-number",
+      "path": "synthetic/counts.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": [
+        {
+          "line": 4,
+          "rule_id": "bare-except"
+        }
+      ]
+    },
+    {
+      "explanation": "A blanket handler hides errors beyond the anticipated missing-key case.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "bare-except-cache",
+      "path": "synthetic/cache.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": [
+        {
+          "line": 4,
+          "rule_id": "bare-except"
+        }
+      ]
+    },
+    {
+      "explanation": "The retry loop catches every exception category, including cancellation and interrupts.",
+      "false_negatives": [
+        {
+          "line": 5,
+          "rule_id": "bare-except"
+        }
+      ],
+      "false_positives": [
+        {
+          "line": 4,
+          "rule_id": "bare-except"
+        }
+      ],
+      "id": "bare-except-retry",
+      "path": "synthetic/refresh.py",
+      "score": 0.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "A concatenated folder value reaches a command interpreted by the shell.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "shell-module-run",
+      "path": "synthetic/folders.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": [
+        {
+          "line": 4,
+          "rule_id": "shell-true"
+        }
+      ]
+    },
+    {
+      "explanation": "Aliasing a subprocess callable does not remove shell interpretation of the revision string.",
+      "false_negatives": [
+        {
+          "line": 4,
+          "rule_id": "shell-true"
+        }
+      ],
+      "false_positives": [],
+      "id": "shell-import-alias",
+      "path": "synthetic/revisions.py",
+      "score": 0.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "The aliased subprocess module launches a caller-supplied command through the shell.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "shell-popen-alias",
+      "path": "synthetic/jobs.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": [
+        {
+          "line": 4,
+          "rule_id": "shell-true"
+        }
+      ]
+    },
+    {
+      "explanation": "Evaluating an unrestricted expression allows caller-controlled Python behavior.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "dynamic-eval-formula",
+      "path": "synthetic/formulas.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": [
+        {
+          "line": 2,
+          "rule_id": "dynamic-exec"
+        }
+      ]
+    },
+    {
+      "explanation": "Settings text is executed as Python rather than read as inert configuration data.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "dynamic-exec-settings",
+      "path": "synthetic/settings.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": [
+        {
+          "line": 3,
+          "rule_id": "dynamic-exec"
+        }
+      ]
+    },
+    {
+      "explanation": "Compiling first does not make executing caller-provided Python text safe.",
+      "false_negatives": [
+        {
+          "line": 3,
+          "rule_id": "dynamic-exec"
+        }
+      ],
+      "false_positives": [],
+      "id": "dynamic-exec-compiled",
+      "path": "synthetic/templates.py",
+      "score": 0.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "The collection is shared across calls, and the parse handler catches unrelated exceptions.",
+      "false_negatives": [
+        {
+          "line": 4,
+          "rule_id": "bare-except"
+        }
+      ],
+      "false_positives": [],
+      "id": "multi-buffer-and-handler",
+      "path": "synthetic/number_buffer.py",
+      "score": 0.6666666666666666,
+      "status": "evaluated",
+      "true_positives": [
+        {
+          "line": 1,
+          "rule_id": "mutable-default"
+        }
+      ]
+    },
+    {
+      "explanation": "This case has four findings, including two distinct rules on the same source line; findings must not be collapsed by line alone.",
+      "false_negatives": [
+        {
+          "line": 3,
+          "rule_id": "mutable-default"
+        },
+        {
+          "line": 8,
+          "rule_id": "bare-except"
+        }
+      ],
+      "false_positives": [],
+      "id": "multi-all-rules-same-line",
+      "path": "synthetic/runner.py",
+      "score": 0.6666666666666666,
+      "status": "evaluated",
+      "true_positives": [
+        {
+          "line": 3,
+          "rule_id": "dynamic-exec"
+        },
+        {
+          "line": 7,
+          "rule_id": "shell-true"
+        }
+      ]
+    },
+    {
+      "explanation": "The None sentinel creates a fresh list on each call that omits the optional buffer.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "clean-none-buffer",
+      "path": "synthetic/safe_messages.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "Strings are immutable; a string default is not a shared mutable container.",
+      "false_negatives": [],
+      "false_positives": [
+        {
+          "line": 1,
+          "rule_id": "mutable-default"
+        }
+      ],
+      "id": "clean-string-default",
+      "path": "synthetic/greetings.py",
+      "score": 0.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "Tuple-of-strings and integer defaults are immutable and contain no targeted issue.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "clean-tuple-default",
+      "path": "synthetic/axes.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "The handler names the expected conversion error and is not a bare except.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "clean-typed-handler",
+      "path": "synthetic/safe_counts.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "An explicit Exception handler can warrant design review, but is outside the bare-except rule.",
+      "false_negatives": [],
+      "false_positives": [
+        {
+          "line": 4,
+          "rule_id": "bare-except"
+        }
+      ],
+      "id": "clean-explicit-exception",
+      "path": "synthetic/failures.py",
+      "score": 0.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "An argument list with literal shell=False does not invoke shell interpretation.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "clean-shell-false-module",
+      "path": "synthetic/safe_folders.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "The imported callable is aliased, but the shell option is explicitly false.",
+      "false_negatives": [],
+      "false_positives": [
+        {
+          "line": 4,
+          "rule_id": "shell-true"
+        }
+      ],
+      "id": "clean-shell-false-alias",
+      "path": "synthetic/safe_labels.py",
+      "score": 0.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "No shell=True keyword is supplied; the subprocess argument sequence is not a target finding.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "clean-no-shell-keyword",
+      "path": "synthetic/version.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "Text that resembles risky syntax remains string data, not an executable call or function default.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "clean-issue-words-in-data",
+      "path": "synthetic/reference_text.py",
+      "score": 1.0,
+      "status": "evaluated",
+      "true_positives": []
+    },
+    {
+      "explanation": "This function creates a code object but never invokes eval or exec; compilation alone is outside these four rules.",
+      "false_negatives": [],
+      "false_positives": [],
+      "id": "clean-compile-only",
+      "path": "synthetic/syntax_check.py",
+      "score": 0.0,
+      "status": "missing",
+      "true_positives": []
+    }
+  ]
+}

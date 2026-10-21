@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.coverage
+htmlcov/
+.ruff_cache/
+.DS_Store
+.env
+.env.*
+*.pem
+*.key
+reports/local/
