@@ -19,6 +19,7 @@ file loaders and to direct evaluate() callers. Source is inert text only.
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -280,7 +281,9 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
     micro_f1 = 2 * total_tp / micro_denominator if micro_denominator else 1.0
     return {
         "schema_version": SCHEMA_VERSION,
-        "score": sum(task["score"] for task in tasks) / len(tasks),
+        # Python's built-in sum changed floating-point accumulation in 3.12.
+        # fsum keeps serialized reports consistent across supported versions.
+        "score": math.fsum(task["score"] for task in tasks) / len(tasks),
         "metrics": {
             "micro_precision": precision,
             "micro_recall": recall,

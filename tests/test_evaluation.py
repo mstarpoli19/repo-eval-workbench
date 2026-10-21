@@ -5,6 +5,7 @@ from __future__ import annotations
 import ast
 import copy
 import json
+import math
 from pathlib import Path
 import tempfile
 import unittest
@@ -134,6 +135,12 @@ class ScoringTests(unittest.TestCase):
         result = evaluate([task(expected=expected)], [{"id": "task", "findings": [finding()]}])
         self.assertAlmostEqual(result["score"], 2 / 3)
         self.assertEqual(result["tasks"][0]["false_negatives"], [finding("dynamic-exec")])
+
+    def test_macro_score_uses_stable_floating_point_aggregation(self):
+        dataset = [task(str(index), [finding(), finding("bare-except", 2)]) for index in range(100)]
+        predictions = [{"id": row["id"], "findings": [finding()]} for row in dataset]
+        result = evaluate(dataset, predictions)
+        self.assertEqual(result["score"], math.fsum([2 / 3] * 100) / 100)
 
     def test_finding_order_is_irrelevant_and_output_is_deterministic(self):
         expected = [finding("shell-true", 3), finding("dynamic-exec", 1), finding()]
